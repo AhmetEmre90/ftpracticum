@@ -1,7 +1,10 @@
 package com.ahmetemre90.ftpracticum.urunyorum;
 
+import com.ahmetemre90.ftpracticum.kullanici.Kullanici;
+import com.ahmetemre90.ftpracticum.urun.Urun;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity(name = "UrunYorum")
 public class UrunYorum {
@@ -10,23 +13,29 @@ public class UrunYorum {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
+
     @Column(nullable = false, length = 500)
     private String yorum;
+
     @Column(nullable = false)
-    private Date yorumTarihi;
-    @Column(nullable = false)
-    private Long urunId;
-    @Column(nullable = false)
-    private Long kullaniciId;
+    private LocalDate yorumTarihi;
+
+    @ManyToOne
+    @JoinColumn(name = "kullaniciId")
+    private Kullanici kullanici;
+
+    @ManyToOne
+    @JoinColumn(name = "urunId")
+    private Urun urun;
 
     public UrunYorum() {
     }
 
-    public UrunYorum(String yorum, Date yorumTarihi, Long urunId, Long kullaniciId) {
+    public UrunYorum(String yorum, LocalDate yorumTarihi, Kullanici kullanici, Urun urun) {
         this.yorum = yorum;
         this.yorumTarihi = yorumTarihi;
-        this.urunId = urunId;
-        this.kullaniciId = kullaniciId;
+        this.kullanici = kullanici;
+        this.urun = urun;
     }
 
     public Long getId() {
@@ -45,27 +54,27 @@ public class UrunYorum {
         this.yorum = yorum;
     }
 
-    public Date getYorumTarihi() {
+    public LocalDate getYorumTarihi() {
         return yorumTarihi;
     }
 
-    public void setYorumTarihi(Date yorumTarihi) {
+    public void setYorumTarihi(LocalDate yorumTarihi) {
         this.yorumTarihi = yorumTarihi;
     }
 
-    public Long getUrunId() {
-        return urunId;
+    public Kullanici getKullanici() {
+        return kullanici;
     }
 
-    public void setUrunId(Long urunId) {
-        this.urunId = urunId;
+    public void setKullanici(Kullanici kullanici) {
+        this.kullanici = kullanici;
     }
 
-    public Long getKullaniciId() {
-        return kullaniciId;
+    public Urun getUrun() {
+        return urun;
     }
 
-    public void setKullaniciId(Long kullaniciId) {
-        this.kullaniciId = kullaniciId;
+    public void setUrun(Urun urun) {
+        this.urun = urun;
     }
 }

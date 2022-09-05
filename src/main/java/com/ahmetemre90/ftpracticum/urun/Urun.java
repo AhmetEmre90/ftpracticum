@@ -1,8 +1,11 @@
 package com.ahmetemre90.ftpracticum.urun;
 
+import com.ahmetemre90.ftpracticum.urunyorum.UrunYorum;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity(name = "Urun")
 public class Urun {
@@ -11,16 +14,22 @@ public class Urun {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
+
     @Column(nullable = false)
     private String adi;
+
     @Column(nullable = false)
     private BigDecimal fiyat;
-    private Date sonKullanmaTarihi;
+
+    private LocalDate sonKullanmaTarihi;
+
+    @OneToMany(mappedBy = "urun")
+    private List<UrunYorum> urunYorums;
 
     public Urun() {
     }
 
-    public Urun(String adi, BigDecimal fiyat, Date sonKullanmaTarihi) {
+    public Urun(String adi, BigDecimal fiyat, LocalDate sonKullanmaTarihi) {
         this.adi = adi;
         this.fiyat = fiyat;
         this.sonKullanmaTarihi = sonKullanmaTarihi;
@@ -50,11 +59,11 @@ public class Urun {
         this.fiyat = fiyat;
     }
 
-    public Date getSonKullanmaTarihi() {
+    public LocalDate getSonKullanmaTarihi() {
         return sonKullanmaTarihi;
     }
 
-    public void setSonKullanmaTarihi(Date sonKullanmaTarihi) {
+    public void setSonKullanmaTarihi(LocalDate sonKullanmaTarihi) {
         this.sonKullanmaTarihi = sonKullanmaTarihi;
     }
 }

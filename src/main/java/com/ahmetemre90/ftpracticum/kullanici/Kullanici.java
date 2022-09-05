@@ -1,6 +1,9 @@
 package com.ahmetemre90.ftpracticum.kullanici;
 
+import com.ahmetemre90.ftpracticum.urunyorum.UrunYorum;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "Kullanici")
 public class Kullanici {
@@ -9,14 +12,21 @@ public class Kullanici {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
+
     @Column(nullable = false, length = 50)
     private String adi;
+
     @Column(nullable = false, length = 50)
     private String soyadi;
+
     @Column(nullable = false, length = 50)
     private String email;
+
     @Column(nullable = false, length = 15)
     private String telefon;
+
+    @OneToMany(mappedBy = "kullanici")
+    private List<UrunYorum> urunYorums;
 
     public Kullanici() {
     }

@@ -21,11 +21,15 @@ public class FtpracticumApplication {
     @Bean
     public CommandLineRunner runner(KullaniciRepository repository) {
         return args -> {
-            repository.save(new Kullanici("ali", "kaya", "ali@mail.com", "3121112201"));
-            repository.save(new Kullanici("mehmet", "uzun", "mehmet@mail.com", "3121112202"));
-            repository.save(new Kullanici("ayşe", "demir", "ayse@mail.com", "3121112203"));
-            repository.save(new Kullanici("fatma", "çelik", "fatma@mail.com", "3121112204"));
-            repository.save(new Kullanici("ali", "demir", "alidemir@mail.com", "3121112205"));
+            var k1 = repository.save(new Kullanici("ali", "kaya", "ali@mail.com", "3121112201"));
+            var k2 = repository.save(new Kullanici("mehmet", "uzun", "mehmet@mail.com", "3121112202"));
+            var k3 = repository.save(new Kullanici("ayşe", "demir", "ayse@mail.com", "3121112203"));
+            var k4 = repository.save(new Kullanici("fatma", "çelik", "fatma@mail.com", "3121112204"));
+            var k5 = repository.save(new Kullanici("ali", "demir", "alidemir@mail.com", "3121112205"));
+
+
+            log.info("-----" + k1.getId().toString());
+
 
             log.info("findAll()");
             for (Kullanici kullanici : repository.findAll()) {
