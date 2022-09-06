@@ -77,4 +77,13 @@ public class UrunYorum {
     public void setUrun(Urun urun) {
         this.urun = urun;
     }
+
+    @Override
+    public String toString() {
+        return "UrunYorum{" +
+                "id=" + id +
+                ", yorum='" + yorum + '\'' +
+                ", yorumTarihi=" + yorumTarihi +
+                '}';
+    }
 }

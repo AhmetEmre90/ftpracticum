@@ -66,4 +66,14 @@ public class Urun {
     public void setSonKullanmaTarihi(LocalDate sonKullanmaTarihi) {
         this.sonKullanmaTarihi = sonKullanmaTarihi;
     }
+
+    @Override
+    public String toString() {
+        return "Urun{" +
+                "id=" + id +
+                ", adi='" + adi + '\'' +
+                ", fiyat=" + fiyat +
+                ", sonKullanmaTarihi=" + sonKullanmaTarihi +
+                '}';
+    }
 }
