@@ -12,7 +12,6 @@ public class FtpracticumApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FtpracticumApplication.class, args);
-        log.info("--------------");
     }
 
 }
